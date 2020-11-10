@@ -1,0 +1,62 @@
+.currency {
+  min-height: 150px;
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+  border-radius: $radius;
+  background-color: $cardColor;
+
+  .currency-info {
+    font-size: $font-mini;
+  }
+
+  .currency-rate {
+    color: $greenishColor;
+    font-size: $font-small;
+  }
+
+  .add-btn {
+    min-width: 80px;
+    padding: 3px;
+    font-size: $font-mini;
+    background-color: $greenishColor;
+  }
+}
+
+//768px tablet view
+@media (min-width: 48rem) {
+  .currency {
+    width: 200px;
+    min-height: 180px;
+
+    .currency-info {
+      font-size: $font-small;
+    }
+
+    .currency-rate {
+      font-size: $font-standard;
+    }
+
+    .add-btn {
+      min-width: 100px;
+      font-size: $font-small;
+    }
+  }
+}
+
+// 1200px big screen view
+@media (min-width: 75rem) {
+  .currency {
+    width: 280px;
+    min-height: 200px;
+    transition: 0.4s ease-out;
+
+    &:hover {
+      transform: translateY(-15px);
+    }
+
+    .currency-info {
+      font-size: 1rem;
+    }
+  }
+}

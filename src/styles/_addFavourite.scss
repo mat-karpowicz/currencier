@@ -1,0 +1,40 @@
+.add-favourite {
+  width: 100%;
+  text-align: center;
+
+  .search-input {
+    height: 30px;
+    width: 70%;
+    margin: 0 auto 20px auto;
+    font-size: $font-mini;
+    color: black;
+    text-align: center;
+    border-radius: $radius;
+
+    &::placeholder {
+      text-align: center;
+      color: black;
+    }
+  }
+
+  .back-btn {
+    display: block;
+    margin: 0 auto 20px auto;
+    font-size: $font-small;
+    background-color: $redishColor;
+  }
+
+  .currency-container {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (min-width: 48rem) {
+  .add-favourite {
+    .currency-container {
+      gap: 40px;
+    }
+  }
+}

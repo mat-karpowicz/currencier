@@ -1,4 +1,5 @@
 /* RESET STYLES */
+
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +15,6 @@
 }
 
 .App {
-  min-width: 100vw;
   min-height: 100vh;
   background: linear-gradient(180deg, #1a1919 0%, rgba(53, 38, 38, 0.22) 100%),
     url('../assets/background.jpg');
@@ -22,12 +22,14 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  padding-bottom: 20px;
 
   .container {
     min-height: 350px;
-    width: 100%;
+    padding: 20px;
   }
 }
+
 .btn {
   min-width: 180px;
   min-height: 30px;
@@ -35,6 +37,7 @@
   border: none;
   border-radius: $radius;
   transition: color 0.3s;
+
   &:hover,
   &:focus {
     color: black;
