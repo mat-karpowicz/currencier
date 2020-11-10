@@ -1,0 +1,57 @@
+.nav {
+  height: 100px;
+  width: 100%;
+  padding: 0 10px 0 10px;
+
+  & > .nav-link {
+    align-self: flex-start;
+    & > a {
+      font-size: $font-mini;
+      transition: color 0.3s;
+      &:hover,
+      &:focus {
+        color: $greenishColor;
+      }
+    }
+  }
+
+  & > .nav-title {
+    align-self: flex-end;
+  }
+}
+
+//768px tablet view
+@media (min-width: 48rem) {
+  .nav {
+    height: 120px;
+    padding: 10px 35px 0 35px;
+
+    & > .nav-link {
+      & > a {
+        font-size: $font-small;
+      }
+    }
+
+    & > .nav-title {
+      font-size: $font-mid;
+    }
+  }
+}
+
+// 1200px big screen view
+@media (min-width: 75rem) {
+  .nav {
+    height: 150px;
+    padding: 40px;
+    padding-bottom: 0;
+    & > .nav-link {
+      & > a {
+        font-size: $font-standard;
+      }
+    }
+
+    & > .nav-title {
+      font-size: $font-big;
+    }
+  }
+}
