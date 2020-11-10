@@ -23,18 +23,15 @@
     font-size: $font-small;
     background-color: $redishColor;
   }
-
-  .currency-container {
-    width: 100%;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+}
+.currency-container {
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 @media (min-width: 48rem) {
-  .add-favourite {
-    .currency-container {
-      gap: 40px;
-    }
+  .currency-container {
+    gap: 40px;
   }
 }

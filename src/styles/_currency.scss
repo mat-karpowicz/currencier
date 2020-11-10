@@ -15,11 +15,18 @@
     font-size: $font-small;
   }
 
-  .add-btn {
+  .add-btn,
+  .remove-btn {
     min-width: 80px;
     padding: 3px;
     font-size: $font-mini;
+  }
+  .add-btn {
     background-color: $greenishColor;
+  }
+
+  .remove-btn {
+    background-color: $redishColor;
   }
 }
 
@@ -37,7 +44,8 @@
       font-size: $font-standard;
     }
 
-    .add-btn {
+    .add-btn,
+    .remove-btn {
       min-width: 100px;
       font-size: $font-small;
     }
