@@ -1,0 +1,8 @@
+# dependencies
+/node_modules
+
+#envs - for this project .env will be included
+#.env
+
+# configs - for this project ESLint and Prettier configs are included
+#.eslintrc  | .prettierrc

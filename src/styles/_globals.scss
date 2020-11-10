@@ -1,0 +1,36 @@
+/* RESET STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  line-height: 1.4em;
+  vertical-align: baseline;
+  text-decoration: none;
+  outline: 0;
+}
+
+.App {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+// GLOBAL STYLES
+
+.flex {
+  display: flex;
+}
+.flex-ai-c {
+  align-items: center;
+}
+.flex-jc-c {
+  justify-content: center;
+}
+.flex-jc-sb {
+  justify-content: space-between;
+}
+.flex-jc-sa {
+  justify-content: space-around;
+}
+.flex-col {
+  flex-direction: column;
+}
