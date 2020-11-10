@@ -3,9 +3,9 @@
   width: 100%;
   padding: 0 10px 0 10px;
 
-  & > .nav-link {
+  .nav-link {
     align-self: flex-start;
-    & > a {
+    a {
       font-size: $font-mini;
       transition: color 0.3s;
       &:hover,
@@ -15,7 +15,7 @@
     }
   }
 
-  & > .nav-title {
+  .nav-title {
     align-self: flex-end;
   }
 }
@@ -26,13 +26,13 @@
     height: 120px;
     padding: 10px 35px 0 35px;
 
-    & > .nav-link {
-      & > a {
+    .nav-link {
+      a {
         font-size: $font-small;
       }
     }
 
-    & > .nav-title {
+    .nav-title {
       font-size: $font-mid;
     }
   }

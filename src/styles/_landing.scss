@@ -1,0 +1,42 @@
+.landing {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  margin: auto;
+
+  .landing-text {
+    font-size: $font-small;
+    margin-bottom: 50px;
+  }
+
+  .landing-btn {
+    font-size: $font-mini;
+    background-color: $greenishColor;
+  }
+}
+
+//768px tablet view
+@media (min-width: 48rem) {
+  .landing {
+    .landing-text {
+      font-size: $font-standard;
+    }
+
+    .landing-btn {
+      font-size: $font-small;
+    }
+  }
+}
+
+// 1200px big screen view
+@media (min-width: 75rem) {
+  .landing {
+    .landing-text {
+      font-size: $font-mid;
+    }
+
+    .landing-btn {
+      font-size: $font-standard;
+    }
+  }
+}
