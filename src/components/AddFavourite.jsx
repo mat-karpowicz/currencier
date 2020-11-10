@@ -41,6 +41,7 @@ function AddFavourite() {
               mid={mid}
               code={code}
               key={currency.code}
+              value
             />
           );
         })}

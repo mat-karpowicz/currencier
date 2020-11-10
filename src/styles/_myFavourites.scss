@@ -1,0 +1,30 @@
+.favs-container {
+  width: 100%;
+  text-align: center;
+
+  .fav-title {
+    margin-bottom: 20px;
+  }
+
+  .remove-all-btn {
+    min-width: 200px;
+    font-size: $font-mini;
+    margin: auto;
+    margin-bottom: 20px;
+    background-color: $redishColor;
+  }
+}
+@media (min-width: 48rem) {
+  .favs-container {
+    .remove-all-btn {
+      font-size: $font-small;
+    }
+  }
+}
+@media (min-width: 75rem) {
+  .favs-container {
+    .fav-title {
+      font-size: $font-big;
+    }
+  }
+}
