@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // COMPONENTS
@@ -8,10 +8,22 @@ import Currency from './Currency';
 import { CurrenciesContext } from '../ContextAPI/CurrenciesContext';
 import { MyFavsContext } from '../ContextAPI/MyFavsContext';
 
+// HELPERS
+import fetchCurrencies from '../helpers/fetchCurrencies';
+
 function AddFavourite({ setAddComponentDisplay }) {
-  const [currencies] = useContext(CurrenciesContext);
+  const [currencies, setCurrencies] = useContext(CurrenciesContext);
   const [MyFavsCurrencies] = useContext(MyFavsContext);
   const [displayCurrencies, setDisplayCurrencies] = useState(currencies);
+
+  useEffect(() => {
+    const getCurrencies = async () => {
+      const fetchedCurrencsies = await fetchCurrencies();
+      await setCurrencies(fetchedCurrencsies);
+    };
+
+    getCurrencies();
+  }, [setCurrencies]);
 
   const search = (e) => {
     const searchQuery = e.target.value.toLowerCase();
