@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // COMPONENTS
 import Currency from './Currency';
 
-// IMPORT MOCKUP DATA
-import currenciesArray from '../helpers/mockupData';
+// CONTEXT
+import { CurrenciesContext } from '../ContextAPI/CurrenciesContext';
 
 function AddFavourite({ setAddComponentDisplay }) {
   // eslint-disable-next-line
-  const [currencies, setCurrencies] = useState(currenciesArray);
+  const [currencies, setCurrencies] = useContext(CurrenciesContext);
   const [displayCurrencies, setDisplayCurrencies] = useState(currencies);
 
   const search = (e) => {
