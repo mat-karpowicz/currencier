@@ -6,21 +6,30 @@
     margin-bottom: 20px;
   }
 
-  .remove-all-btn {
+  .fav-btn {
     min-width: 200px;
     font-size: $font-mini;
     margin: auto;
     margin-bottom: 20px;
+  }
+
+  .remove-all-btn {
     background-color: $redishColor;
   }
+
+  .add-more-btn {
+    background-color: $greenishColor;
+  }
 }
+
 @media (min-width: 48rem) {
   .favs-container {
-    .remove-all-btn {
+    .fav-btn {
       font-size: $font-small;
     }
   }
 }
+
 @media (min-width: 75rem) {
   .favs-container {
     .fav-title {
