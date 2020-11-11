@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 // COMPONENTS
 import Currency from './Currency';
 
-function MyFavourites({ myFavs, setAddComponentDisplay }) {
+// CONTEXT
+import { MyFavsContext } from '../ContextAPI/MyFavsContext';
+
+function MyFavourites({ setAddComponentDisplay }) {
+  const [myFavsCurrencies] = useContext(MyFavsContext);
+
   return (
     <div className="favs-container flex flex-col">
       <h1 className="fav-title">My favourites:</h1>
@@ -19,7 +24,7 @@ function MyFavourites({ myFavs, setAddComponentDisplay }) {
         remove all
       </button>
       <div className="currency-container flex flex-jc-c">
-        {myFavs.map(({ currency, mid, code }) => {
+        {myFavsCurrencies.map(({ currency, mid, code }) => {
           return (
             <Currency
               currency={currency}
@@ -36,7 +41,6 @@ function MyFavourites({ myFavs, setAddComponentDisplay }) {
 }
 
 MyFavourites.propTypes = {
-  myFavs: PropTypes.arrayOf(Object).isRequired,
   setAddComponentDisplay: PropTypes.func.isRequired,
 };
 

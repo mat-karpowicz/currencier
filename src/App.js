@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-
-// MOCKED DATA
-import currenciesArray from './helpers/mockupData';
+import React, { useState, useContext } from 'react';
 
 // COMPONENTS
 import Navigation from './components/Navigation';
@@ -9,30 +6,27 @@ import Landing from './components/Landing';
 import AddFavourite from './components/AddFavourite';
 import MyFavourites from './components/MyFavourites';
 
+// CONTEXT
+import { MyFavsContext } from './ContextAPI/MyFavsContext';
+
 function App() {
-  const [myFavs, setMyFavs] = useState([]);
+  const [myFavsCurrencies] = useContext(MyFavsContext);
   const [addComponentDisplay, setAddComponentDisplay] = useState(false);
 
   return (
     <div className="App">
       <Navigation />
       <div className="container flex flex-ai-c flex-jc-c">
-        {myFavs.length === 0 && addComponentDisplay === false ? (
+        {myFavsCurrencies.length === 0 && addComponentDisplay === false ? (
           <Landing setAddComponentDisplay={setAddComponentDisplay} />
         ) : null}
 
         {addComponentDisplay === true ? (
-          <AddFavourite
-            setMyFavs={setMyFavs}
-            setAddComponentDisplay={setAddComponentDisplay}
-          />
+          <AddFavourite setAddComponentDisplay={setAddComponentDisplay} />
         ) : null}
 
-        {myFavs.length !== 0 && addComponentDisplay === false ? (
-          <MyFavourites
-            myFavs={currenciesArray}
-            setAddComponentDisplay={setAddComponentDisplay}
-          />
+        {myFavsCurrencies.length !== 0 && addComponentDisplay === false ? (
+          <MyFavourites setAddComponentDisplay={setAddComponentDisplay} />
         ) : null}
       </div>
     </div>
