@@ -4,7 +4,9 @@ const getCurrencies = async () => {
     .then((data) => {
       return data[0].rates;
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      return new Error('Error during fetch', error);
+    });
 
   return currencies;
 };

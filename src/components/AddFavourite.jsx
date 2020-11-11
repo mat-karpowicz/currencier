@@ -11,19 +11,25 @@ import { MyFavsContext } from '../ContextAPI/MyFavsContext';
 // HELPERS
 import fetchCurrencies from '../helpers/fetchCurrencies';
 
-function AddFavourite({ setAddComponentDisplay }) {
+function AddFavourite({ setAddComponentDisplay, setError }) {
   const [currencies, setCurrencies] = useContext(CurrenciesContext);
   const [MyFavsCurrencies] = useContext(MyFavsContext);
-  const [displayCurrencies, setDisplayCurrencies] = useState(currencies);
+  const [displayCurrencies, setDisplayCurrencies] = useState([]);
 
   useEffect(() => {
     const getCurrencies = async () => {
-      const fetchedCurrencsies = await fetchCurrencies();
-      await setCurrencies(fetchedCurrencsies);
+      setError(false);
+      const fetchedCurrencies = await fetchCurrencies();
+      if (fetchedCurrencies instanceof Error) {
+        return setError(true);
+      }
+      setCurrencies(fetchedCurrencies);
+      return setDisplayCurrencies(fetchedCurrencies);
     };
 
     getCurrencies();
-  }, [setCurrencies]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const search = (e) => {
     const searchQuery = e.target.value.toLowerCase();
@@ -38,49 +44,58 @@ function AddFavourite({ setAddComponentDisplay }) {
 
   return (
     <div className="add-favourite">
-      <input
-        type="'text"
-        className="search-input"
-        placeholder="search for currency"
-        onChange={(e) => search(e)}
-      />
-      <button
-        type="button"
-        className="btn back-btn"
-        onClick={() => setAddComponentDisplay(false)}
-      >
-        go back
-      </button>
-      <div className="currency-container flex flex-jc-c">
-        {displayCurrencies
-          .filter((currency) => {
-            if (
-              MyFavsCurrencies.some((favCurr) => favCurr.code === currency.code)
-            ) {
-              return null;
-            }
-            return currency;
-          })
-          .map(({ currency, mid, code }) => {
-            return (
-              <Currency
-                key={code}
-                currency={currency}
-                mid={mid}
-                code={code}
-                btnType
-                displayCurrencies={displayCurrencies}
-                setDisplayCurrencies={setDisplayCurrencies}
-              />
-            );
-          })}
-      </div>
+      {displayCurrencies.length === 0 ? (
+        <h1>Fetching data...</h1>
+      ) : (
+        <>
+          <input
+            type="'text"
+            className="search-input"
+            placeholder="search for currency"
+            onChange={(e) => search(e)}
+          />
+          <button
+            type="button"
+            className="btn back-btn"
+            onClick={() => setAddComponentDisplay(false)}
+          >
+            go back
+          </button>
+          <div className="currency-container flex flex-jc-c">
+            {displayCurrencies
+              .filter((currency) => {
+                if (
+                  MyFavsCurrencies.some(
+                    (favCurr) => favCurr.code === currency.code
+                  )
+                ) {
+                  return null;
+                }
+                return currency;
+              })
+              .map(({ currency, mid, code }) => {
+                return (
+                  <Currency
+                    key={code}
+                    currency={currency}
+                    mid={mid}
+                    code={code}
+                    btnType
+                    displayCurrencies={displayCurrencies}
+                    setDisplayCurrencies={setDisplayCurrencies}
+                  />
+                );
+              })}
+          </div>
+        </>
+      )}
     </div>
   );
 }
 
 AddFavourite.propTypes = {
   setAddComponentDisplay: PropTypes.func.isRequired,
+  setError: PropTypes.func.isRequired,
 };
 
 export default AddFavourite;
