@@ -4,16 +4,19 @@ import PropTypes from 'prop-types';
 // COMPONENTS
 import Currency from './Currency';
 
-function MyFavourites({ myFavs }) {
-  MyFavourites.propTypes = {
-    myFavs: PropTypes.arrayOf(Object).isRequired,
-  };
-
+function MyFavourites({ myFavs, setAddComponentDisplay }) {
   return (
     <div className="favs-container flex flex-col">
       <h1 className="fav-title">My favourites:</h1>
-      <button type="button" className="btn remove-all-btn">
-        REMOVE ALL
+      <button
+        type="button"
+        className="btn fav-btn add-more-btn"
+        onClick={() => setAddComponentDisplay(true)}
+      >
+        add more
+      </button>
+      <button type="button" className="btn fav-btn remove-all-btn">
+        remove all
       </button>
       <div className="currency-container flex flex-jc-c">
         {myFavs.map(({ currency, mid, code }) => {
@@ -23,7 +26,7 @@ function MyFavourites({ myFavs }) {
               mid={mid}
               code={code}
               key={currency.code}
-              value={false}
+              btnType={false}
             />
           );
         })}
@@ -31,5 +34,10 @@ function MyFavourites({ myFavs }) {
     </div>
   );
 }
+
+MyFavourites.propTypes = {
+  myFavs: PropTypes.arrayOf(Object).isRequired,
+  setAddComponentDisplay: PropTypes.func.isRequired,
+};
 
 export default MyFavourites;
