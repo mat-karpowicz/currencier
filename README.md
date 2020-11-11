@@ -1,5 +1,8 @@
 # 💰 Currencier 💰
 
+## Live version
+
+Check live version of this project [HERE!](https://currencier.netlify.app/)
 
 ## Table of contents
 * [General info](#general-info)
