@@ -6,18 +6,19 @@ import Currency from './Currency';
 
 // CONTEXT
 import { CurrenciesContext } from '../ContextAPI/CurrenciesContext';
+import { MyFavsContext } from '../ContextAPI/MyFavsContext';
 
 function AddFavourite({ setAddComponentDisplay }) {
-  // eslint-disable-next-line
-  const [currencies, setCurrencies] = useContext(CurrenciesContext);
+  const [currencies] = useContext(CurrenciesContext);
+  const [MyFavsCurrencies] = useContext(MyFavsContext);
   const [displayCurrencies, setDisplayCurrencies] = useState(currencies);
 
   const search = (e) => {
     const searchQuery = e.target.value.toLowerCase();
-    const filteredCurrencies = currencies.filter((el) => {
+    const filteredCurrencies = currencies.filter((currency) => {
       return (
-        el.currency.toLowerCase().indexOf(searchQuery) !== -1 ||
-        el.code.toLowerCase().indexOf(searchQuery) !== -1
+        currency.currency.toLowerCase().indexOf(searchQuery) !== -1 ||
+        currency.code.toLowerCase().indexOf(searchQuery) !== -1
       );
     });
     return setDisplayCurrencies(filteredCurrencies);
@@ -39,17 +40,28 @@ function AddFavourite({ setAddComponentDisplay }) {
         go back
       </button>
       <div className="currency-container flex flex-jc-c">
-        {displayCurrencies.map(({ currency, mid, code }) => {
-          return (
-            <Currency
-              key={currency.code}
-              currency={currency}
-              mid={mid}
-              code={code}
-              btnType
-            />
-          );
-        })}
+        {displayCurrencies
+          .filter((currency) => {
+            if (
+              MyFavsCurrencies.some((favCurr) => favCurr.code === currency.code)
+            ) {
+              return null;
+            }
+            return currency;
+          })
+          .map(({ currency, mid, code }) => {
+            return (
+              <Currency
+                key={code}
+                currency={currency}
+                mid={mid}
+                code={code}
+                btnType
+                displayCurrencies={displayCurrencies}
+                setDisplayCurrencies={setDisplayCurrencies}
+              />
+            );
+          })}
       </div>
     </div>
   );
