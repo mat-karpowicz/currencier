@@ -8,7 +8,11 @@ import Currency from './Currency';
 import { MyFavsContext } from '../ContextAPI/MyFavsContext';
 
 function MyFavourites({ setAddComponentDisplay }) {
-  const [myFavsCurrencies] = useContext(MyFavsContext);
+  const [myFavsCurrencies, setMyFavsCurrencies] = useContext(MyFavsContext);
+
+  const removeAllFavs = () => {
+    setMyFavsCurrencies([]);
+  };
 
   return (
     <div className="favs-container flex flex-col">
@@ -20,7 +24,11 @@ function MyFavourites({ setAddComponentDisplay }) {
       >
         add more
       </button>
-      <button type="button" className="btn fav-btn remove-all-btn">
+      <button
+        type="button"
+        className="btn fav-btn remove-all-btn"
+        onClick={() => removeAllFavs()}
+      >
         remove all
       </button>
       <div className="currency-container flex flex-jc-c">
@@ -30,7 +38,7 @@ function MyFavourites({ setAddComponentDisplay }) {
               currency={currency}
               mid={mid}
               code={code}
-              key={currency.code}
+              key={code}
               btnType={false}
             />
           );

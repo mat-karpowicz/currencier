@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { element } from 'prop-types';
 
 export const CurrenciesContext = createContext();
 
@@ -45,5 +45,5 @@ export const CurrenciesProvider = ({ children }) => {
 };
 
 CurrenciesProvider.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(element).isRequired,
 };
