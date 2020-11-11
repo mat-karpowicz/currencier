@@ -8,6 +8,7 @@ import MyFavourites from './components/MyFavourites';
 
 // CONTEXT
 import { MyFavsContext } from './ContextAPI/MyFavsContext';
+import { CurrenciesProvider } from './ContextAPI/CurrenciesContext';
 
 function App() {
   const [myFavsCurrencies] = useContext(MyFavsContext);
@@ -21,13 +22,15 @@ function App() {
           <Landing setAddComponentDisplay={setAddComponentDisplay} />
         ) : null}
 
-        {addComponentDisplay === true ? (
-          <AddFavourite setAddComponentDisplay={setAddComponentDisplay} />
-        ) : null}
+        <CurrenciesProvider>
+          {addComponentDisplay === true ? (
+            <AddFavourite setAddComponentDisplay={setAddComponentDisplay} />
+          ) : null}
 
-        {myFavsCurrencies.length !== 0 && addComponentDisplay === false ? (
-          <MyFavourites setAddComponentDisplay={setAddComponentDisplay} />
-        ) : null}
+          {myFavsCurrencies.length !== 0 && addComponentDisplay === false ? (
+            <MyFavourites setAddComponentDisplay={setAddComponentDisplay} />
+          ) : null}
+        </CurrenciesProvider>
       </div>
     </div>
   );
