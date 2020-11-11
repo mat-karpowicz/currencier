@@ -15,16 +15,19 @@ function AddFavourite({ setAddComponentDisplay, setError }) {
   const [currencies, setCurrencies] = useContext(CurrenciesContext);
   const [MyFavsCurrencies] = useContext(MyFavsContext);
   const [displayCurrencies, setDisplayCurrencies] = useState([]);
+  const [fetching, setFetching] = useState(false);
 
   useEffect(() => {
     const getCurrencies = async () => {
       setError(false);
+      setFetching(true);
       const fetchedCurrencies = await fetchCurrencies();
       if (fetchedCurrencies instanceof Error) {
         return setError(true);
       }
       setCurrencies(fetchedCurrencies);
-      return setDisplayCurrencies(fetchedCurrencies);
+      setDisplayCurrencies(fetchedCurrencies);
+      return setFetching(false);
     };
 
     getCurrencies();
@@ -44,7 +47,7 @@ function AddFavourite({ setAddComponentDisplay, setError }) {
 
   return (
     <div className="add-favourite">
-      {displayCurrencies.length === 0 ? (
+      {fetching ? (
         <h1>Fetching data...</h1>
       ) : (
         <>
